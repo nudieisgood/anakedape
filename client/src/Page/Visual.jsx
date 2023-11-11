@@ -46,7 +46,7 @@ const Visual = () => {
 
                     <div className="flex gap-4">
                       <p className="font-extrabold text-textMd text-6xl">
-                        0{i + 1}
+                        {i + 1 > 9 ? i + 1 : `0${i + 1}`}
                       </p>
                     </div>
                   </div>
@@ -81,7 +81,7 @@ const Visual = () => {
 
                     <div className="flex gap-4">
                       <p className="font-extrabold text-textMd text-6xl">
-                        0{i + 1}
+                        {i + 1 > 9 ? i + 1 : `0${i + 1}`}
                       </p>
                     </div>
                   </div>
@@ -91,7 +91,7 @@ const Visual = () => {
         </div>
       </div>
 
-      <div className="sm:hidden flex flex-col gap-24">
+      <div className="sm:hidden flex flex-col gap-24 mb-24">
         {visualData?.visualSections?.map((sec, i) => {
           const isOdd = (number) => number % 2 !== 0;
           if (isOdd(i + 1))
@@ -117,7 +117,7 @@ const Visual = () => {
                     </VisualImagesBox>
                     <div className="flex gap-4">
                       <p className="font-extrabold text-textMd text-6xl">
-                        0{i + 1}
+                        {i + 1 > 9 ? i + 1 : `0${i + 1}`}
                       </p>
                     </div>
                   </div>
@@ -148,7 +148,7 @@ const Visual = () => {
                     </VisualImagesBox>
                     <div className="flex gap-4 text-start">
                       <p className="font-extrabold text-textMd text-6xl">
-                        0{i + 1}
+                        {i + 1 > 9 ? i + 1 : `0${i + 1}`}
                       </p>
                     </div>
                   </div>

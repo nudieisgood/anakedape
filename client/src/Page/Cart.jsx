@@ -7,7 +7,7 @@ import { Spinner } from "@material-tailwind/react";
 
 export const loader = async () => {
   const cart = JSON.parse(localStorage.getItem("cart"));
-  if (!cart) return { msg: "Your cart is empty" };
+  if (!cart || !cart.length) return { msg: "Your cart is empty" };
   const cartItems = Object.values(cart.map((c) => c.itemId));
 
   try {
