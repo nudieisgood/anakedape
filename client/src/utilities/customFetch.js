@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // export const backendBaseURL = "http://127.0.0.1:5001";
-export const backendBaseURL = "http://localhost:5001";
+// export const backendBaseURL = "http://localhost:5001";
+export const backendBaseURL = "https://anakedape.onrender.com";
 
 const customFetch = axios.create({
   // baseURL: `${backendBaseURL}/api/`,
