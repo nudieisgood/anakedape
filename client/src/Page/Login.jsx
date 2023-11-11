@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { FormInput, Spinner } from "../components";
-import { useAppContext } from "../context/appContext";
+import { useAppContext } from "../context/AppContext";
 import customFetch from "../utilities/customFetch";
 
 export const action = async ({ request }) => {
