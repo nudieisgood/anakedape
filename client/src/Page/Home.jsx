@@ -19,6 +19,7 @@ const data = {
 
 export const loader = async () => {
   try {
+    console.log("test");
     const res = await customFetch.get("items", {
       params: { status: ["new arrivals", "coming soon"] },
     });
