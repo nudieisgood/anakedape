@@ -4,7 +4,7 @@ import { useAppContext } from "../context/AppContext";
 const Completed = () => {
   const { setCart } = useAppContext();
   useEffect(() => {
-    localStorage.setItem("cart", null);
+    localStorage.setItem("cart", JSON.stringify([]));
     setCart([]);
   });
 

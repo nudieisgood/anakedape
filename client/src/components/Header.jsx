@@ -86,16 +86,21 @@ const Header = () => {
                   onClick={() => setShowModal(!showModal)}
                 />
               </button>
-              <Link to={"/cart"} className="relative">
-                <PiBagThin size={30} className="" />
-                <p
-                  className={`text-xs font-extralight absolute bottom-1  ${
-                    cart.length > 8 ? "left-2.5" : "left-3"
-                  }`}
-                >
-                  {cart.length}
-                </p>
-              </Link>
+
+              {cart.length ? (
+                <Link to={"/cart"} className="relative">
+                  <PiBagThin size={30} className="" />
+                  <div
+                    className={`absolute bottom-4 left-3 w-6 h-6 grid place-items-center text-xs font-extralight bg-gray-200 opacity-70 text-black rounded-full`}
+                  >
+                    <p>{cart.length}</p>
+                  </div>
+                </Link>
+              ) : (
+                <Link to={"/cart"}>
+                  <PiBagThin size={30} className="" />
+                </Link>
+              )}
             </div>
           </div>
         </motion.nav>
