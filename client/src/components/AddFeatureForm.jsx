@@ -1,10 +1,9 @@
-import { Form, Link, useNavigation } from "react-router-dom";
+import { Form, useNavigation } from "react-router-dom";
 import { format } from "date-fns";
 import FormInput from "./FormInput";
 import FormFileInput from "./FormFileInput";
 import FormTextarea from "./FormTextarea";
 import Spinner from "./Spinner";
-import { MdOutlineClose } from "react-icons/md";
 
 const AddFeatureForm = ({ errorArr, featureNo }) => {
   const navigation = useNavigation();
@@ -91,12 +90,6 @@ const AddFeatureForm = ({ errorArr, featureNo }) => {
         />
       </div>
 
-      <Link
-        to="../places"
-        className="absolute top-0 right-0 p-3 hover:text-primary text-gray-500"
-      >
-        <MdOutlineClose className="text-2xl" />
-      </Link>
       <button
         disabled={isSubmitting ? true : false}
         type="submit"

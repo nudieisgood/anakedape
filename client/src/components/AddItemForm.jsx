@@ -6,7 +6,6 @@ import FormSelect from "./FormSelect";
 import FormTextarea from "./FormTextarea";
 import Spinner from "./Spinner";
 
-import { MdOutlineClose } from "react-icons/md";
 import { useState } from "react";
 const status = ["coming soon", "new arrivals", "sale", "regular"];
 
@@ -107,12 +106,6 @@ const AddItemForm = ({ errorArr }) => {
         <FormFileInput />
       </div>
 
-      <Link
-        to="../places"
-        className="absolute top-0 right-0 p-3 hover:text-primary text-gray-500"
-      >
-        <MdOutlineClose className="text-2xl" />
-      </Link>
       <button
         disabled={isSubmitting ? true : false}
         type="submit"

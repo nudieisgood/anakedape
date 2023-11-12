@@ -8,7 +8,6 @@ import FormTextarea from "./FormTextarea";
 
 import Spinner from "./Spinner";
 
-import { MdOutlineClose } from "react-icons/md";
 import { useState } from "react";
 
 const EditFeatureForm = ({ feature }) => {
@@ -175,13 +174,6 @@ const EditFeatureForm = ({ feature }) => {
           labelText="Content Section 4"
         />
       </div>
-
-      <Link
-        to="/features"
-        className="absolute top-0 right-0 p-3 hover:text-primary text-gray-500"
-      >
-        <MdOutlineClose className="text-2xl" />
-      </Link>
 
       <button
         disabled={isSubmitting ? true : false}

@@ -15,7 +15,6 @@ const FormInput = ({
   max,
   min,
 }) => {
-  console.log(max);
   return (
     <div className="grow">
       {!noTitle && (

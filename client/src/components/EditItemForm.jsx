@@ -9,7 +9,6 @@ import FormTextarea from "./FormTextarea";
 
 import Spinner from "./Spinner";
 
-import { MdOutlineClose } from "react-icons/md";
 import { useState } from "react";
 import customFetch from "../utilities/customFetch";
 const status = ["coming soon", "new arrivals", "sale", "regular"];
@@ -221,13 +220,6 @@ const EditItemForm = ({ item }) => {
           </div>
         </div>
       </div>
-
-      <Link
-        to="../places"
-        className="absolute top-0 right-0 p-3 hover:text-primary text-gray-500"
-      >
-        <MdOutlineClose className="text-2xl" />
-      </Link>
 
       <button
         type="button"

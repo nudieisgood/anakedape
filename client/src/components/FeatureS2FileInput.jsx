@@ -22,7 +22,7 @@ const FeatureS2FileInput = ({ des }) => {
 
       setSection2Photos(data);
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 
