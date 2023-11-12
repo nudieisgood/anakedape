@@ -53,16 +53,22 @@ export const validateCreateOrderInput = withValidationError([
     .notEmpty()
     .withMessage("credit card is required.")
     .isLength({ min: 14, max: 14 })
+    .withMessage("invalid card number")
+    .isNumeric()
     .withMessage("invalid card number"),
   body("creditCardExp")
     .notEmpty()
     .withMessage("credit card exp date is required.")
     .isLength({ min: 6, max: 6 })
+    .withMessage("invalid exp date")
+    .isNumeric()
     .withMessage("invalid exp date"),
   body("creditCardSecurityCode")
     .notEmpty()
     .withMessage("credit card security code is required.")
     .isLength({ min: 3, max: 3 })
+    .withMessage("invalid security code")
+    .isNumeric()
     .withMessage("invalid security code"),
   body("email")
     .notEmpty()

@@ -33,14 +33,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 dotenv.config();
 
-if (process.env.NODE_ENV !== "production") {
-  console.log("dev mode");
-}
-
-const url =
-  process.env.NODE_ENV !== "production" ? "http://127.0.0.1:5100" : "";
-
 const app = express();
+
+//dev use
 app.use(
   cors({
     credentials: true,

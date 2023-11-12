@@ -12,7 +12,10 @@ const FormInput = ({
   inputError,
   required = true,
   readOnly = false,
+  max,
+  min,
 }) => {
+  console.log(max);
   return (
     <div className="grow">
       {!noTitle && (
@@ -26,6 +29,8 @@ const FormInput = ({
 
       <p className="text-sm text-gray-400 mb-1">{des}</p>
       <input
+        minLength={min}
+        maxLength={max}
         readOnly={readOnly}
         required={required}
         className={

@@ -50,7 +50,7 @@ export const getItemById = async (req, res) => {
   const item = await Item.findById(id);
 
   if (!item) {
-    throw new NotFoundError(`Can not find the job with ID:${id}`);
+    throw new NotFoundError(`Can not find the item with ID:${id}`);
   }
 
   res.status(StatusCodes.OK).json({ data: item });
@@ -62,7 +62,7 @@ export const deleteItemById = async (req, res) => {
   const removeItem = await Item.findByIdAndDelete(id);
 
   if (!removeItem) {
-    throw new NotFoundError(`Can not find the Place with ID:${id}`);
+    throw new NotFoundError(`Can not find the item with ID:${id}`);
   }
 
   res.status(StatusCodes.OK).json({ msg: "item deleted" });
@@ -177,7 +177,7 @@ export const editItem = async (req, res) => {
   });
 
   if (!updatedItem) {
-    throw new NotFoundError(`Can not find the place with ID:${id}`);
+    throw new NotFoundError(`Can not find the item with ID:${id}`);
   }
 
   res.status(StatusCodes.OK).json({ data: updatedItem });

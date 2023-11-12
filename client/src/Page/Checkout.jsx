@@ -95,7 +95,8 @@ const Checkout = () => {
           <FormInput
             inputError={errors?.includes("invalid phone")}
             name="phone"
-            type="number"
+            type="text"
+            max={10}
             placeHolder="Phone"
           />
         </div>
@@ -106,21 +107,24 @@ const Checkout = () => {
           <FormInput
             inputError={errors?.includes("invalid card number")}
             name="creditCardNum"
-            type="number"
+            type="text"
             placeHolder="Credit card number"
+            max={14}
           />
           <div className="flex gap-1">
             <FormInput
               inputError={errors?.includes("invalid exp date")}
               name="creditCardExp"
-              type="number"
+              type="text"
               placeHolder="Expiration date (MMYYYY)"
+              max={6}
             />
             <FormInput
               inputError={errors?.includes("invalid security code")}
               name="creditCardSecurityCode"
-              type="number"
+              type="text"
               placeHolder="Security code"
+              max={3}
             />
           </div>
         </div>
