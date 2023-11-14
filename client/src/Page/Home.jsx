@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Suspense } from "react";
+import { Suspense } from "react";
 import logo from "../assets/logo.png";
 import {
   ComingSoon,
@@ -13,7 +13,6 @@ import customFetch from "../utilities/customFetch";
 import { Link, useLoaderData, Await, defer } from "react-router-dom";
 import visual1 from "../assets/visual/visual1.jpeg";
 import visual2 from "../assets/visual/visual2.jpeg";
-import { motion } from "framer-motion";
 
 const data = {
   visualTitle: "2023 Autumn / Winter",
@@ -41,32 +40,6 @@ export const loader = async () => {
 };
 
 const Home = () => {
-  const [visual, setVisual] = useState(true);
-  const lastRef = useRef();
-  const firstRef = useRef();
-
-  // useEffect(() => {
-  //   if (!lastRef?.current) return;
-
-  //   const obs = new IntersectionObserver(
-  //     function (entries) {
-  //       const ent = entries[0];
-  //       if (ent.isIntersecting) {
-  //         setVisual(true);
-  //       }
-  //       if (!ent.isIntersecting) {
-  //         setVisual(false);
-  //       }
-  //     },
-  //     {
-  //       root: null,
-  //       threshold: [0.2, 0.8],
-  //     }
-  //   );
-
-  //   obs.observe(lastRef.current);
-  // }, [lastRef]);
-
   const loaderPromise = useLoaderData();
 
   return (
@@ -109,13 +82,7 @@ const Home = () => {
               <NewArrivals items={newArrivals} />
               <ComingSoon items={comingSoon} />
               <FadeIn>
-                <div
-                  id="visual"
-                  ref={lastRef}
-                  className={`
-                 ${visual ? "w-screen" : "w-[80%]"}
-                   h-screen flex relative overflow-hidden mx-auto transition-all duration-1000`}
-                >
+                <div className="w-screen h-screen flex relative overflow-hidden mx-auto transition-all duration-1000">
                   <div className="flex w-full">
                     <img
                       className="object-cover w-full"
