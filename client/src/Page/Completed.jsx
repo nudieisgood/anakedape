@@ -6,7 +6,7 @@ const Completed = () => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify([]));
     setCart([]);
-  });
+  }, []);
 
   return (
     <div className="section-container px-4">

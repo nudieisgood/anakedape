@@ -54,7 +54,7 @@ const Header = () => {
             opacity: 1,
           }}
           transition={{
-            y: { duration: 0.5 },
+            y: { duration: 0.8 },
           }}
           className="py-4 px-4 lg:px-14 flex justify-between w-full fixed top-0 left-0 right-0 bg-transparent"
         >
@@ -64,7 +64,7 @@ const Header = () => {
             </ModalContainer>
           )}
 
-          <Link to={"/"} className="flex w-40 ">
+          <Link to={"/"} className="flex w-40">
             <img src={logo} alt="" />
           </Link>
           <div className="flex items-center gap-6">

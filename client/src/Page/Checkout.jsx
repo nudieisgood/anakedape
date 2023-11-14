@@ -31,6 +31,9 @@ export const action = async ({ request }) => {
     if (error.response.data.msg === "some items are out of stock")
       return redirect("/cart");
 
+    if (error.response.data.msg === "some items are unavailable")
+      return redirect("/cart");
+
     if (error.response.data.msg === "invalid token")
       throw {
         status: error.response.status,

@@ -1,7 +1,20 @@
-import { Link, useLoaderData, useSubmit, Form } from "react-router-dom";
-import { FormRowSelect, ItemsPagination } from "../components";
+import {
+  useLoaderData,
+  useSubmit,
+  Form,
+  Await,
+  defer,
+  useNavigation,
+} from "react-router-dom";
+import {
+  FormRowSelect,
+  ItemsPagination,
+  ItemBox,
+  ScreenLoader,
+} from "../components";
 import { useAppContext } from "../context/AppContext";
 import customFetch from "../utilities/customFetch";
+import { Suspense } from "react";
 
 const filter = {
   ALL: "all",
@@ -25,116 +38,116 @@ export const loader = async ({ request }) => {
   const queryObj = Object.fromEntries(queryEntriesArr);
 
   try {
-    const res = await customFetch.get("items", {
+    const res = customFetch.get("items", {
       params: queryObj,
     });
 
-    return {
-      items: res.data.data,
-      searchValues: queryObj,
-      currentPage: res.data.currentPage,
-      totalItems: res.data.totalItems,
-    };
+    return defer({
+      items: res,
+    });
   } catch (error) {
     return error;
   }
 };
 
 const Items = () => {
-  const { items, searchValues, currentPage, totalItems } = useLoaderData();
+  const queryEntriesArr = [
+    ...new URL(window.location.href).searchParams.entries(),
+  ];
+  const searchValues = Object.fromEntries(queryEntriesArr);
+
+  const loaderPromise = useLoaderData();
+  const navigation = useNavigation();
+  const submit = useSubmit();
   const { user } = useAppContext();
 
-  const submit = useSubmit();
+  const isPageLoading = navigation.state === "loading";
+
+  if (isPageLoading && navigation.location.pathname === "/all-items")
+    return (
+      <div className="section-container mt-48 px-10">
+        <div className="grid md:grid-cols-3 mt-8 gap-6">
+          <ScreenLoader />
+          <ScreenLoader />
+          <ScreenLoader />
+          <ScreenLoader />
+          <ScreenLoader />
+          <ScreenLoader />
+        </div>
+      </div>
+    );
+
   return (
     <div className="section-container mt-48 px-10">
-      <div className="flex justify-between items-center py-4">
-        <div className="flex items-center gap-8">
-          <h1 className=" sm:text-3xl font-extrabold tracking-wider uppercase">
-            {searchValues?.typeFilter}
-          </h1>
-          <p className="text-textMd text-xs sm:text-lg">{totalItems} items</p>
-        </div>
-        <div>
-          <Form className="md:flex gap-2">
-            <FormRowSelect
-              name="statusFilter"
-              list={[...Object.values(statusfilter)]}
-              defaultValue={searchValues?.statusFilter}
-              onChange={(e) => {
-                submit(e.currentTarget.form);
-              }}
-            />
-            <FormRowSelect
-              name="typeFilter"
-              list={[...Object.values(filter)]}
-              defaultValue={searchValues?.typeFilter}
-              onChange={(e) => {
-                submit(e.currentTarget.form);
-              }}
-            />
-          </Form>
-        </div>
-      </div>
+      <Suspense
+        fallback={
+          <div className="grid md:grid-cols-3 mt-8 gap-6">
+            <ScreenLoader />
+            <ScreenLoader />
+            <ScreenLoader />
+            <ScreenLoader />
+            <ScreenLoader />
+            <ScreenLoader />
+          </div>
+        }
+      >
+        <Await resolve={loaderPromise.items}>
+          {(loaderData) => {
+            const { totalItems, currentPage } = loaderData.data;
+            const { data: items } = loaderData.data;
+            return (
+              <>
+                <div className="flex justify-between items-center py-4">
+                  <div className="flex items-center gap-8">
+                    <h1 className=" sm:text-3xl font-extrabold tracking-wider uppercase">
+                      {searchValues?.typeFilter}
+                    </h1>
+                    <p className="text-textMd text-xs sm:text-lg">
+                      {totalItems} items
+                    </p>
+                  </div>
+                  <div>
+                    <Form className="md:flex gap-2">
+                      <FormRowSelect
+                        name="statusFilter"
+                        list={[...Object.values(statusfilter)]}
+                        defaultValue={searchValues?.statusFilter}
+                        onChange={(e) => {
+                          submit(e.currentTarget.form);
+                        }}
+                      />
+                      <FormRowSelect
+                        name="typeFilter"
+                        list={[...Object.values(filter)]}
+                        defaultValue={searchValues?.typeFilter}
+                        onChange={(e) => {
+                          submit(e.currentTarget.form);
+                        }}
+                      />
+                    </Form>
+                  </div>
+                </div>
 
-      <div className="grid md:grid-cols-3 mt-8 gap-6">
-        {items?.map((item) => {
-          const totalStock = item?.stock
-            .map((s) => s.quantity)
-            ?.reduce((curr, acc) => curr + acc, 0);
-          return (
-            <Link to={`/item/${item._id}`} key={item._id} className="">
-              <div className="relative p-6 bg-[#f5f5f5]">
-                <div className="hover:opacity-0 transition-all duration-1000">
-                  <img src={item.photos[0]} alt="" />
-                  <p className="text-center absolute bottom-2 left-0 right-0 text-textLight text-sm">
-                    {item.name}
-                  </p>
+                <div className="grid md:grid-cols-3 mt-8 gap-6">
+                  {items?.map((item) => (
+                    <ItemBox key={item._id} item={item} user={user} />
+                  ))}
                 </div>
-                <div className="bg-[#f5f5f5] absolute bottom-2 left-0 right-0 top-0 opacity-0 hover:opacity-100 transition-all duration-1000">
-                  <img src={item.photos[item.photos.length - 1]} alt="" />
+                <div className="flex justify-center my-20">
+                  {totalItems > 16 && (
+                    <ItemsPagination
+                      totalPages={Math.ceil(totalItems / 16)}
+                      totalItems={items.length}
+                      currentPage={currentPage}
+                    />
+                  )}
                 </div>
-                {!totalStock && (
-                  <p className="absolute top-2 left-2 text-textLight text-sm">
-                    SOLD OUT
-                  </p>
-                )}
-                {item.status === "coming soon" && (
-                  <p className="absolute top-2 left-2 text-textLight text-sm">
-                    COMING SOON
-                  </p>
-                )}
-                {user?.role === "admin" && (
-                  <Link
-                    to={`/admin/editItem/${item._id}`}
-                    className="absolute top-2 right-3 hover:text-red-500 text-sm "
-                  >
-                    EDIT ITEM
-                  </Link>
-                )}
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-      <div className="flex justify-center my-20">
-        {totalItems > 16 && (
-          <ItemsPagination
-            totalPages={Math.ceil(totalItems / 16)}
-            totalItems={items.length}
-            currentPage={currentPage}
-          />
-        )}
-      </div>
+              </>
+            );
+          }}
+        </Await>
+      </Suspense>
     </div>
   );
 };
 export default Items;
-
-// if (!queryObj?.typeFilter || queryObj?.typeFilter === "all items")
-// return { allItems: items };
-
-// const filterItems = items.filter(
-// (item) => item.type === queryObj?.typeFilter
-// );
-
-// return { searchValues: queryObj, allItems: filterItems };

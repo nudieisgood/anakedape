@@ -1,4 +1,4 @@
-import { Form, Link, useNavigation, useNavigate } from "react-router-dom";
+import { Form, useNavigation, useNavigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 
@@ -18,6 +18,7 @@ const type = ["jacket", "shirt", "top", "hat", "accessory", "pants"];
 const EditItemForm = ({ item }) => {
   const {
     photos,
+    isAvailable,
     name,
     stock,
     fabric,
@@ -31,7 +32,6 @@ const EditItemForm = ({ item }) => {
   const [sizing, setSizing] = useState(stock.length > 1);
   const navigation = useNavigation();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const isSubmitting = navigation.state === "submitting";
 
   const [ogPhotos, setOgPhotos] = useState(photos);
@@ -45,20 +45,6 @@ const EditItemForm = ({ item }) => {
   const changeMainPic = (photo) => {
     const otherPhotos = ogPhotos.filter((ogPhoto) => ogPhoto !== photo);
     setOgPhotos([photo, ...otherPhotos]);
-  };
-
-  const deleteItem = async () => {
-    setLoading(true);
-    try {
-      await customFetch.delete(`items/${_id}`);
-      navigate("/all-items");
-    } catch (error) {
-      throw {
-        status: error.response.status,
-        message: error.response.data.msg,
-      };
-    }
-    setLoading(false);
   };
 
   return (
@@ -81,7 +67,7 @@ const EditItemForm = ({ item }) => {
         name="fabric"
         placeHolder="item fabric"
       />
-      <div className="flex gap-1">
+      <div className="flex flex-col sm:flex-row gap-1">
         <FormInput
           defaultValue={price}
           type="text"
@@ -102,7 +88,7 @@ const EditItemForm = ({ item }) => {
           list={status}
         />
       </div>
-      <div>
+      <div className="lg:col-span-2">
         <h1 className="text-lg">Size / Qty</h1>
         <button
           className="border p-2 rounded-sm"
@@ -114,7 +100,7 @@ const EditItemForm = ({ item }) => {
           {sizing ? "One Size" : "different size"}
         </button>
         {sizing ? (
-          <div className="flex gap-1">
+          <div className="flex flex-col sm:flex-row gap-1">
             <FormInput
               defaultValue={stock[0]?.quantity}
               classValue="text-sm"
@@ -149,7 +135,7 @@ const EditItemForm = ({ item }) => {
             />
           </div>
         ) : (
-          <div className="flex gap-1">
+          <div className="w-40">
             <FormInput
               defaultValue={stock[0]?.quantity}
               classValue="text-sm"
@@ -162,7 +148,7 @@ const EditItemForm = ({ item }) => {
         )}
       </div>
 
-      <div className="lg:col-span-2">
+      <div className="lg:col-span-3">
         <FormTextarea
           name="description"
           defaultValue={description}
@@ -222,17 +208,9 @@ const EditItemForm = ({ item }) => {
       </div>
 
       <button
-        type="button"
-        onClick={deleteItem}
-        className="bg-red-500 text-white rounded-sm py-2 self-end"
-      >
-        {loading ? <Spinner /> : "DELETE ITEM"}
-      </button>
-
-      <button
         disabled={isSubmitting ? true : false}
         type="submit"
-        className="bg-brandPrimary text-white rounded-sm py-2 self-end"
+        className="bg-brandPrimary text-white rounded-sm py-2 self-end mt-4"
       >
         {isSubmitting ? <Spinner /> : "SUBMIT"}
       </button>

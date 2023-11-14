@@ -1,6 +1,6 @@
 import { visual } from "../data";
 import { useLoaderData } from "react-router-dom";
-import { FadeIn, VisualImagesBox } from "../components";
+import { FadeIn, VisualImagesBox, GoToTop } from "../components";
 
 export const loader = () => {
   return visual;
@@ -18,7 +18,6 @@ const Visual = () => {
           </div>
         </div>
       </FadeIn>
-
       <div className="hidden sm:flex flex-row justify-between sm:gap-10 md:gap-16 px-10 sm:px-16 mb-32">
         <div className="flex flex-col gap-64">
           {visualData?.visualSections?.map((sec, i) => {
@@ -90,7 +89,6 @@ const Visual = () => {
           })}
         </div>
       </div>
-
       <div className="sm:hidden flex flex-col gap-24 mb-24">
         {visualData?.visualSections?.map((sec, i) => {
           const isOdd = (number) => number % 2 !== 0;
@@ -157,6 +155,7 @@ const Visual = () => {
             );
         })}
       </div>
+      <GoToTop />
     </div>
   );
 };

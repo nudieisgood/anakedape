@@ -9,7 +9,7 @@ const Hero = ({ randomFeatures }) => {
   return (
     <div
       id="hero"
-      className="relative grid sm:grid-cols-[3fr,2fr] mt-28 sm:mt-0 items-center gap-5 px-5 sm:px-0"
+      className="relative grid sm:grid-cols-[3fr,2fr] mt-28 sm:mt-0 items-center gap-5 px-2  sm:px-0"
     >
       <Carousel setFeature={setFeature} autoSlide={true}>
         {randomFeatures.map((feat) => (
@@ -20,7 +20,7 @@ const Hero = ({ randomFeatures }) => {
           />
         ))}
       </Carousel>
-      <div className="xl:px-16 space-y-6">
+      <div className="xl:px-16 space-y-6 ">
         {randomFeatures.map((feat, i) => (
           <div key={i}>
             {feature === i && (

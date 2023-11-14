@@ -9,6 +9,9 @@
   box-sizing: border-box;
 }
 
+body {
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -17,37 +20,34 @@ input[type="tel"],
 textarea {
   @apply w-full border py-2 px-2 rounded-sm;
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* width */
-::-webkit-scrollbar {
-  height: 2px;
+.coming-scrollbar::-webkit-scrollbar {
+  height: 4px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  margin-top: 10px;
+.coming-scrollbar::-webkit-scrollbar-track {
+  margin-top: 10 px;
   background: white;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
+.coming-scrollbar::-webkit-scrollbar-thumb {
   background: #f0eff4;
   border-radius: 10px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-textLight;
+.coming-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-300;
 }
 
 html,
 body {
-  font-family: "Cabin", sans-serif; /* overflow-x: hidden; */
-  @apply scroll-smooth w-screen;
+  font-family: "Cabin", sans-serif;
+  overflow-x: hidden;
+  @apply scroll-smooth;
 }
 
 header {

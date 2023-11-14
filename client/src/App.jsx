@@ -1,8 +1,6 @@
 import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { AppContextProvider } from "./context/AppContext";
-import { useEffect } from "react";
-import customFetch from "./utilities/customFetch";
 
 //page comp
 import {
@@ -40,12 +38,12 @@ import { loader as editItemLoader } from "./Page/EditItem";
 import { loader as ordersLoader } from "./Page/Orders";
 import { loader as editFeatureLoader } from "./Page/EditFeature";
 import { loader as addFeatureLoader } from "./Page/AddFeature";
+import { loader as adminLoader } from "./Page/AdminLayout";
 
 //import action
 import { action as itemAction } from "./Page/Item";
 import { action as cartAction } from "./Page/Cart";
 import { action as checkoutAction } from "./Page/Checkout";
-// import { action as LoginAction } from "./Page/Login";
 import { action as registerAction } from "./Page/Register";
 import { action as addItemAction } from "./Page/ManageItems";
 import { action as editItemAction } from "./Page/EditItem";
@@ -90,6 +88,7 @@ const router = createBrowserRouter([
       {
         path: "admin",
         element: <AdminLayout />,
+        loader: adminLoader,
         children: [
           { index: true, element: <ManageItems />, action: addItemAction },
           {

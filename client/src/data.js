@@ -49,15 +49,15 @@ export const visual = {
 
 export const news = [
   {
-    date: "2023/10/10",
-    title: "Notification of paperless packing list",
+    date: "2023/11/15",
+    title: "Notification of A Naked Ape",
     content:
-      "DESCENDANT Official Webstore will make the switch to paperless packing lists. Due to this change, a printed packing list will no longer be included within shipments. If a physical packing list is required please download this from the URL attached to the email shipping notification.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
   {
-    date: "2023/10/10",
-    title: "Notification of paperless packing list",
+    date: "2023/11/10",
+    title: "Notification of packing list",
     content:
-      "DESCENDANT Official Webstore will make the switch to paperless packing lists. Due to this change, a printed packing list will no longer be included within shipments. If a physical packing list is required please download this from the URL attached to the email shipping notification.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
 ];

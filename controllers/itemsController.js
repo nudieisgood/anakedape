@@ -3,18 +3,32 @@ import Item from "../models/ItemModel.js";
 import cloudinary from "cloudinary";
 import { promises as fs } from "fs";
 import { NotFoundError } from "../errors/customError.js";
+import { verifyJWT } from "../utlits.js";
 
 export const getAllItems = async (req, res) => {
   const { typeFilter, statusFilter, sort, cartItemsId, status } = req.query;
 
   const queryObj = {};
 
+  queryObj.isAvailable = true;
+
+  const { token } = req.cookies;
+  if (token) {
+    const { role } = verifyJWT(token);
+
+    if (role === "admin") {
+      queryObj.isAvailable = [true, false];
+    }
+  }
+
   if (status) {
     queryObj.status = status;
+    queryObj.isAvailable = true;
   }
 
   if (cartItemsId?.length) {
     queryObj._id = cartItemsId;
+    queryObj.isAvailable = [true, false];
   }
 
   if (typeFilter && typeFilter !== "all") {
@@ -36,6 +50,7 @@ export const getAllItems = async (req, res) => {
     price: 1,
     status: 1,
     stock: 1,
+    isAvailable: 1,
   })
     .skip(skip)
     .limit(limit);
@@ -56,16 +71,21 @@ export const getItemById = async (req, res) => {
   res.status(StatusCodes.OK).json({ data: item });
 };
 
-export const deleteItemById = async (req, res) => {
+export const activeItemById = async (req, res) => {
   const { id } = req.params;
+  const item = await Item.findById(id);
 
-  const removeItem = await Item.findByIdAndDelete(id);
+  const updatedItem = await Item.findByIdAndUpdate(
+    id,
+    { isAvailable: !item.isAvailable },
+    { new: true }
+  );
 
-  if (!removeItem) {
+  if (!updatedItem) {
     throw new NotFoundError(`Can not find the item with ID:${id}`);
   }
 
-  res.status(StatusCodes.OK).json({ msg: "item deleted" });
+  res.status(StatusCodes.OK).json({ msg: "item updated" });
 };
 
 export const createItem = async (req, res) => {
@@ -171,7 +191,7 @@ export const editItem = async (req, res) => {
   req.body.ogPhotos = req.body.ogPhotos.split(",");
 
   req.body.photos = [...req.body.photos, ...req.body.ogPhotos];
-  console.log(req.body);
+
   const updatedItem = await Item.findByIdAndUpdate(id, req.body, {
     new: true,
   });
@@ -201,4 +221,16 @@ export const editItem = async (req, res) => {
 //   const items = await Item.find(queryObj);
 
 //   res.status(StatusCodes.OK).json({ data: items });
+// };
+
+// export const deleteItemById = async (req, res) => {
+//   const { id } = req.params;
+
+//   const removeItem = await Item.findByIdAndDelete(id);
+
+//   if (!removeItem) {
+//     throw new NotFoundError(`Can not find the item with ID:${id}`);
+//   }
+
+//   res.status(StatusCodes.OK).json({ msg: "item deleted" });
 // };

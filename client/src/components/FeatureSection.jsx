@@ -4,7 +4,7 @@ const FeatureSection = ({ fiveFeatures }) => {
   return (
     <div id="feature" className="my-24">
       <h1 className="section-title">Feature</h1>
-      <div className="flex overflow-scroll gap-10 pb-8">
+      <div className="flex overflow-scroll gap-10 pb-8 coming-scrollbar">
         {fiveFeatures?.map((feat, i) => (
           <Link
             to={`/feature/${feat.featureNo}`}

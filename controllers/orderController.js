@@ -20,8 +20,12 @@ export const createOrder = async (req, res) => {
       name: 1,
       stock: 1,
       price: 1,
+      isAvailable: 1,
     }
   );
+
+  if (ids.map((id) => id.isAvailable).includes(false))
+    throw new BadRequestError("some items are unavailable");
 
   const promises = items.map(async (item) => {
     let checkOther;

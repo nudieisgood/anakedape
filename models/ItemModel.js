@@ -7,6 +7,10 @@ const ItemSchema = new mongoose.Schema(
     photosId: [String],
     description: String,
     price: Number,
+    isAvailable: {
+      type: Boolean,
+      default: true,
+    },
     stock: [
       {
         size: String,

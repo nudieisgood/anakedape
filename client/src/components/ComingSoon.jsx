@@ -4,7 +4,7 @@ const ComingSoon = ({ items }) => {
   return (
     <div className="section-container text-center md:px-4 my-24">
       <h1 className="section-title">Coming Soon</h1>
-      <div className="flex gap-4 overflow-scroll pb-8">
+      <div className="flex gap-4 overflow-scroll pb-8 coming-scrollbar">
         {items.map((item) => (
           <Link
             to={`/item/${item._id}`}

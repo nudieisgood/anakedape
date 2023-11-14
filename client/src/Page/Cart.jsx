@@ -33,6 +33,10 @@ export const action = async ({ request }) => {
 
 const Cart = () => {
   const cartItems = useLoaderData();
+  const { cart, removeFromCart } = useAppContext();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (cartItems.msg)
     return (
@@ -48,11 +52,8 @@ const Cart = () => {
       </div>
     );
 
-  const { cart, removeFromCart } = useAppContext();
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const checkStockArr = [];
+  const checkAvailableArr = [];
   const checkout = async () => {
     setIsSubmitting(true);
     try {
@@ -100,13 +101,15 @@ const Cart = () => {
         </div>
 
         {cartItems?.map((c, i) => {
-          const { name, photos, price, stock } = c.itemInfo;
+          const { name, photos, price, stock, isAvailable } = c.itemInfo;
+
           const stockQty = stock.filter((st) => st.size === c.sizing)[0]
             .quantity;
 
           if (stockQty === 0) checkStockArr.push(stockQty);
-
+          if (!isAvailable) checkStockArr.push(isAvailable);
           priceArr.push(price);
+
           return (
             <div
               key={i}
@@ -131,6 +134,7 @@ const Cart = () => {
                   1
                 </div>
                 <p className="text-red-500">{!stockQty && "OUT OF STOCK"}</p>
+                <p className="text-red-500">{!isAvailable && "UNAVAILABLE"}</p>
                 <button
                   type="button"
                   disabled={loading}
@@ -160,6 +164,8 @@ const Cart = () => {
         <p className="text-xs text-red-500">
           {checkStockArr.length > 0 &&
             "Please remove items that are out of stock before checkout."}
+          {checkAvailableArr.length > 0 &&
+            "Please remove items that are unavailable before checkout."}
         </p>
         <button
           disabled={isSubmitting || checkStockArr.length > 0}

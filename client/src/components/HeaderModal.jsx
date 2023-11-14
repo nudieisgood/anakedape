@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
-import { PiListThin, PiBagThin } from "react-icons/pi";
+import { PiBagThin } from "react-icons/pi";
 
 const links = [
   { link: "jacket", path: "/all-items?typeFilter=jacket" },
@@ -13,6 +13,7 @@ const links = [
 
 const HeaderModal = ({ setShowModal }) => {
   const { user, logout, cart } = useAppContext();
+  const navigate = useNavigate();
 
   return (
     <div className="p-10 grid md:grid-cols-2 xl:grid-cols-3 gap-16">
@@ -82,6 +83,7 @@ const HeaderModal = ({ setShowModal }) => {
           <button
             onClick={() => {
               logout();
+              navigate("/");
               setShowModal(false);
             }}
             className="border border-white px-2 py-1 rounded-lg hover:opacity-50"

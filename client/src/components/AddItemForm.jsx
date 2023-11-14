@@ -33,7 +33,7 @@ const AddItemForm = ({ errorArr }) => {
         name="fabric"
         placeHolder="item fabric"
       />
-      <div className="flex gap-1">
+      <div className="flex flex-col sm:flex-row gap-1">
         <FormInput
           type="text"
           name="price"
@@ -43,7 +43,7 @@ const AddItemForm = ({ errorArr }) => {
         <FormSelect labelText="Item Type" name="type" list={type} />
         <FormSelect labelText="Item Status" name="status" list={status} />
       </div>
-      <div>
+      <div className="lg:col-span-2">
         <h1 className="text-lg">Size / Qty</h1>
         <button
           className="border p-2 rounded-sm"
@@ -52,41 +52,41 @@ const AddItemForm = ({ errorArr }) => {
             setSizing(!sizing);
           }}
         >
-          {sizing ? "One Size" : "different size"}
+          {sizing ? "Different size" : "One Size"}
         </button>
         {sizing ? (
-          <div className="flex gap-1">
+          <div className="flex flex-col sm:flex-row gap-1">
             <FormInput
               classValue="text-sm"
               type="number"
-              labelText="SMALL / 28W"
+              labelText="SMALL/28W"
               name="sizeS"
               placeHolder="QTY"
             />
             <FormInput
               classValue="text-sm"
               type="number"
-              labelText="MEDIUM / 30W"
+              labelText="MEDIUM/30W"
               name="sizeM"
               placeHolder="QTY"
             />
             <FormInput
               classValue="text-sm"
               type="number"
-              labelText="LARGE / 32W"
+              labelText="LARGE/32W"
               name="sizeL"
               placeHolder="QTY"
             />
             <FormInput
               classValue="text-sm"
               type="number"
-              labelText="XLARGE / 34W"
+              labelText="XLARGE/34W"
               name="sizeXL"
               placeHolder="QTY"
             />
           </div>
         ) : (
-          <div className="flex gap-1">
+          <div className=" sm:w-40">
             <FormInput
               classValue="text-sm"
               type="number"

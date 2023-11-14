@@ -3,7 +3,7 @@ import {
   createItem,
   getItemById,
   editItem,
-  deleteItemById,
+  activeItemById,
   getAllItems,
 } from "../controllers/itemsController.js";
 //middlewares
@@ -38,6 +38,6 @@ router
     authenticateAdmin,
     editItem
   )
-  .delete(authenticateUser, authenticateAdmin, deleteItemById);
+  .put(authenticateUser, authenticateAdmin, activeItemById);
 
 export default router;

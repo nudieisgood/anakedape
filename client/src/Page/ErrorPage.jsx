@@ -16,7 +16,9 @@ const ErrorPage = () => {
 
         <p className="flex gap-4 text-2xl">
           <span>{error.status}</span>
-          <span>{error.status ? 404 && "PAGE NOT FOUND." : error.message}</span>
+          <span>
+            {error.status === 404 ? "PAGE NOT FOUND." : error.message}
+          </span>
         </p>
         <Link
           className="text-gray-500 hover:underline hover:text-brandPrimary"
