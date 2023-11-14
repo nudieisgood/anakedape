@@ -17,7 +17,6 @@ import AddItemForm from "./AddItemForm";
 import Spinner from "./Spinner";
 import EditItemForm from "./EditItemForm";
 import AddFeatureForm from "./AddFeatureForm";
-import FeatureS1FileInput from "./FeatureS1FileInput";
 import EditFeatureForm from "./EditFeatureForm";
 import ItemsPagination from "./ItemsPagination";
 import FormRowSelect from "./FormRowSelect";
@@ -44,7 +43,6 @@ export {
   FormSelect,
   EditItemForm,
   AddFeatureForm,
-  FeatureS1FileInput,
   EditFeatureForm,
   ItemsPagination,
   FormRowSelect,
