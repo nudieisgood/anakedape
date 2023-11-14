@@ -10,9 +10,9 @@
 node_modules
 *.local
 dist
-HomeCopy.jsx
-FeatureS1FileInput.jsx
-FeatureS2FileInput.jsx
+HomeCopy
+FeatureS1FileInput
+FeatureS2FileInput
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
