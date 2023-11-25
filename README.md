@@ -4,11 +4,11 @@
 
 此為 RWD 網頁可以在不同裝置上瀏覽操作，你可以在網站上瀏覽品牌最新資訊，預覽或購買商品。在 footer 位置有供網頁管理者進入的入口來查看顧客訂單，並管理訂單是否出貨完成，以及新增及修改商品的內容，亦可管理 features 專欄頁面的文章內容，顧客訂單確定後後端伺服器會管理資料庫中商品的數量等。
 
-本專案前端主要利用 React.js 建立的電子商務平台，使用者分為三類：非會員使用者、會員使用者、商家管理員（Admin），另外後端功能搭配 Node.js / Express.js。
+本作品前端主要利用 React.js 建立的電子商務平台，使用者分為三類：非會員使用者、會員使用者、商家管理員（Admin），另外後端功能搭配 Node.js / Express.js。
 
 # Live web - 作品連結
 
-您可以瀏覽此專案 : <a herf="https://anakedape.onrender.com">Live web</a>
+您可以瀏覽此作品 : <a target="blank" href="https://anakedape.onrender.com">Live web</a>
 
 可以由 Footer 進入管理者頁面 （點擊即登入）
 <img src="https://res.cloudinary.com/dfvtounam/image/upload/v1700889557/anakedape-footer_xnpobd.png"  />
@@ -50,7 +50,7 @@
   - 管理者可修改商品, 專欄 - 新增及修改 CRUD
   - 管理者可進行訂單管理 - 訂單狀態
 
-# Content - 專案內容
+# Content - 作品內容
 
 - 使用者頁面
   <img src="https://res.cloudinary.com/dfvtounam/image/upload/v1700889555/anakedape-%E5%95%86%E5%93%81%E5%80%91_xjkcvp.png"  />
