@@ -66,13 +66,14 @@
 
 # Folders - 資料夾說明
 
-- 前端
+- 前端 / client folder
 
   - assets - 靜態資源
-  - components - 頁面零組件
-  - pages - 主要畫面組件
+  - components - 頁面零組件 / 組件 scss 與該資料夾一起
+  - pages - 主要畫面組件 / 畫面 scss 與該資料夾一起
   - context - 上層 state 管理
   - utilities - 其他 helper function 及 靜態資料
+  - styles - 通用 scss 檔案
 
 - 伺服器端
   - controllers - 邏輯控制器
@@ -87,7 +88,6 @@
   - React.js
   - react-router-dom
   - axios
-  - tailwindcss
   - framer-motion
 
 - 伺服器端
