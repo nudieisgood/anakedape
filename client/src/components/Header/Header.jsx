@@ -70,7 +70,7 @@ const Header = () => {
           <ul className="header__nav-text">
             {navItems.map(({ link, path }) => (
               <li key={path}>
-                <Link to={path} className="btn-text">
+                <Link to={path} className="btn-text heading-3">
                   {link}
                 </Link>
               </li>
@@ -78,19 +78,19 @@ const Header = () => {
           </ul>
           <div className="header__nav-icon">
             <PiListThin
-              className="btn-text"
+              className="btn-text heading-3"
               size={30}
               onClick={() => setShowModal(!showModal)}
             />
 
             {cart.length ? (
               <Link to={"/cart"} className="header__cart">
-                <PiBagThin size={30} className="btn-text" />
+                <PiBagThin size={30} className="btn-text heading-3" />
                 <span className="header__cart-qty">{cart.length}</span>
               </Link>
             ) : (
               <Link to={"/cart"}>
-                <PiBagThin size={30} className="btn-text" />
+                <PiBagThin size={30} className="btn-text heading-3" />
               </Link>
             )}
           </div>

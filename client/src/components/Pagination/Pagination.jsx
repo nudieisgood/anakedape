@@ -29,25 +29,25 @@ const Pagination = ({ totalPages, currentPage }) => {
       >
         <HiChevronDoubleLeft />
       </button>
-      <div className="flex gap-1">
-        {pages.map((page) => {
-          return (
-            <button
-              className={`${
-                page === currentPage
-                  ? "pagination__btn pagination__btn--active"
-                  : "pagination__btn"
-              }`}
-              onClick={() => {
-                handlePageChange(page);
-              }}
-              key={page}
-            >
-              {page}
-            </button>
-          );
-        })}
-      </div>
+
+      {pages.map((page) => {
+        return (
+          <button
+            className={`${
+              page === currentPage
+                ? "pagination__btn pagination__btn--active"
+                : "pagination__btn"
+            }`}
+            onClick={() => {
+              handlePageChange(page);
+            }}
+            key={page}
+          >
+            {page}
+          </button>
+        );
+      })}
+
       <button
         className="pagination__btn"
         onClick={() => {

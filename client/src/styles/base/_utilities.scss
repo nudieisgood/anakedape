@@ -1,14 +1,9 @@
-.center-text {
-  text-align: center !important;
-}
-
 .mb-sm {
   margin-bottom: 2rem !important;
 }
 .mb-md {
   margin-bottom: 4rem !important;
 }
-
 .mb-lg {
   margin-bottom: 6rem !important;
 }
@@ -21,25 +16,23 @@
 .mt-xl {
   margin-top: 10rem !important;
 }
-
 .px-md {
   padding: 0 2rem 0 2rem !important;
 }
-
 .my-lg {
   margin: 6rem 0 !important;
 }
 .p-xs {
-  padding: 0.5rem;
+  padding: 0.5rem !important;
 }
 .p-sm {
-  padding: 1rem;
+  padding: 1rem !important;
 }
 .p-md {
-  padding: 2rem;
+  padding: 2rem !important;
 }
 .p-lg {
-  padding: 3rem;
+  padding: 3rem !important;
 }
 .center-x {
   display: flex;
@@ -94,6 +87,10 @@
   max-width: 80rem;
   margin: 0 auto;
   margin-bottom: 5rem;
+}
+
+.center-text {
+  text-align: center !important;
 }
 
 .section-title {

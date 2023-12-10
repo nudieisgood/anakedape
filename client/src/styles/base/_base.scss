@@ -1,9 +1,9 @@
 *,
 *::after,
 *::before {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  box-sizing: inherit;
 }
 
 html {
@@ -19,10 +19,9 @@ html {
 }
 
 body {
-  box-sizing: border-box;
   font-family: "Cabin", sans-serif;
   overflow-x: hidden;
-  // @apply scroll-smooth;
+  scroll-behavior: smooth;
 }
 
 img {
@@ -40,6 +39,22 @@ textarea {
   border: 1px solid $color-grey-dark-2;
   border-radius: 2px;
   padding: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  li {
+    list-style: none;
+  }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 a.active {

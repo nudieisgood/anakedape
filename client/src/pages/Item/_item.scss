@@ -1,3 +1,17 @@
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .item-page {
   &__bgc {
     background-color: $color-item-bg;
@@ -51,8 +65,14 @@
     background-color: $color-primary;
     color: $color-white;
     padding: 11px 0;
+    position: relative;
+  }
 
-    &--coming {
-    }
+  &__lowstock {
+    position: absolute;
+    left: 1rem;
+    color: orangered;
+
+    animation: pulsate 2s infinite;
   }
 }

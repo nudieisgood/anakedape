@@ -12,7 +12,7 @@ import Login from "./User/Login";
 import Completed from "./Completed/Completed";
 import AdminLayout from "./Admin/AdminLayout";
 import AdminNav from "./Admin/AdminNav";
-import ManageItems from "./Admin/ManageItems";
+import AddItem from "./Admin/AddItem";
 import EditItem from "./Admin/EditItem";
 import Orders from "./Admin/Orders";
 import EditFeature from "./Admin/EditFeature";
@@ -34,10 +34,10 @@ export {
   AdminLayout,
   AdminNav,
   EditItem,
-  ManageItems,
   Orders,
   EditFeature,
   AddFeature,
   ErrorPage,
   Visual,
+  AddItem,
 };

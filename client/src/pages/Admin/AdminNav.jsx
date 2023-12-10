@@ -10,7 +10,7 @@ const AdminNav = () => {
         orders
       </NavLink>
       <NavLink className="btn btn-text" to="manage-feature">
-        manage features
+        Add features
       </NavLink>
     </nav>
   );

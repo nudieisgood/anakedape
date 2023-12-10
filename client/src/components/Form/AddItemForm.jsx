@@ -16,11 +16,7 @@ const AddItemForm = ({ errorArr }) => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   return (
-    <Form
-      method="post"
-      encType="multipart/form-data"
-      className="relative border p-6 rounded-sm shadow-lg shadow-grey-300 gap-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center"
-    >
+    <Form method="post" encType="multipart/form-data" className="form-page">
       <FormInput
         type="text"
         labelText="item name"
@@ -33,7 +29,7 @@ const AddItemForm = ({ errorArr }) => {
         name="fabric"
         placeHolder="item fabric"
       />
-      <div className="flex flex-col sm:flex-row gap-1">
+      <div className="form-page__price">
         <FormInput
           type="text"
           name="price"
@@ -43,10 +39,10 @@ const AddItemForm = ({ errorArr }) => {
         <FormSelect labelText="Item Type" name="type" list={type} />
         <FormSelect labelText="Item Status" name="status" list={status} />
       </div>
-      <div className="lg:col-span-2">
-        <h1 className="text-lg">Size / Qty</h1>
+      <div className="form-page__size">
+        <h1 className="form__filed-title">Size / Qty</h1>
         <button
-          className="border p-2 rounded-sm"
+          className="btn btn-text"
           type="button"
           onClick={() => {
             setSizing(!sizing);
@@ -55,30 +51,26 @@ const AddItemForm = ({ errorArr }) => {
           {sizing ? "Different size" : "One Size"}
         </button>
         {sizing ? (
-          <div className="flex flex-col sm:flex-row gap-1">
+          <div className="form-page__size--sizing">
             <FormInput
-              classValue="text-sm"
               type="number"
               labelText="SMALL/28W"
               name="sizeS"
               placeHolder="QTY"
             />
             <FormInput
-              classValue="text-sm"
               type="number"
               labelText="MEDIUM/30W"
               name="sizeM"
               placeHolder="QTY"
             />
             <FormInput
-              classValue="text-sm"
               type="number"
               labelText="LARGE/32W"
               name="sizeL"
               placeHolder="QTY"
             />
             <FormInput
-              classValue="text-sm"
               type="number"
               labelText="XLARGE/34W"
               name="sizeXL"
@@ -86,30 +78,27 @@ const AddItemForm = ({ errorArr }) => {
             />
           </div>
         ) : (
-          <div className=" sm:w-40">
-            <FormInput
-              classValue="text-sm"
-              type="number"
-              labelText="ONE SIZE"
-              name="oneSize"
-              placeHolder="QTY"
-            />
-          </div>
+          <FormInput
+            type="number"
+            labelText="ONE SIZE"
+            name="oneSize"
+            placeHolder="QTY"
+          />
         )}
       </div>
 
-      <div className="lg:col-span-2">
+      <div className="form-page__des">
         <FormTextarea name="description" labelText="description" />{" "}
       </div>
 
-      <div className="lg:col-span-2">
+      <div className="form-page__imgs">
         <FormFileInput />
       </div>
 
       <button
         disabled={isSubmitting ? true : false}
         type="submit"
-        className="bg-brandPrimary text-white rounded-sm py-2 self-end"
+        className="btn-form"
       >
         {isSubmitting ? <Spinner /> : "SUBMIT"}
       </button>

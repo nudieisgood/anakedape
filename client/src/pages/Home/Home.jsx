@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import logo from "../../assets/logo.png";
+
 import {
   ComingSoon,
   Hero,

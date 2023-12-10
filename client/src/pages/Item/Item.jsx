@@ -56,6 +56,12 @@ const Item = () => {
             navigate("/cart");
           };
 
+          const isLowStock = () => {
+            const qty = stock.filter((s) => s?.size === sizing)[0]?.quantity;
+            if (qty !== 0 && qty <= 2) return true;
+            return false;
+          };
+
           return (
             <div className="item-page__bgc">
               <div className="item-page">
@@ -77,7 +83,7 @@ const Item = () => {
                           <button
                             disabled={!s.quantity}
                             onClick={() => {
-                              setSizing(s.size);
+                              setSizing((pre) => s.size);
                             }}
                             key={i}
                             className={`item-page__size-btn ${
@@ -112,6 +118,9 @@ const Item = () => {
                         (isSizeInCart() || !sizing) && "opacity-md"
                       }`}
                     >
+                      {isLowStock() && (
+                        <h4 className="item-page__lowstock">low stock</h4>
+                      )}
                       {!stock
                         .map((s) => s.quantity)
                         .reduce((curr, acc) => curr + acc, 0)

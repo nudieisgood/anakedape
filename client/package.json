@@ -11,10 +11,8 @@
   },
   "dependencies": {
     "@mantine/hooks": "^7.1.7",
-    "@material-tailwind/react": "^2.1.4",
     "axios": "^1.6.0",
     "date-fns": "^2.30.0",
-    "flowbite-react": "^0.6.4",
     "framer-motion": "^10.16.4",
     "react": "^18.2.0",
     "react-content-loader": "^6.2.1",
@@ -34,7 +32,6 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "postcss": "^8.4.31",
     "sass": "^1.69.5",
-    "tailwindcss": "^3.3.5",
     "vite": "^4.4.5"
   }
 }

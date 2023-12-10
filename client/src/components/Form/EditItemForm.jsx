@@ -1,6 +1,3 @@
-import { AiFillStar } from "react-icons/ai";
-import { BsTrash } from "react-icons/bs";
-
 import { Form, useNavigation } from "react-router-dom";
 import { useState } from "react";
 
@@ -8,6 +5,7 @@ import FormInput from "./FormInput";
 import FormFileInput from "./FormFileInput";
 import FormSelect from "./FormSelect";
 import FormTextarea from "./FormTextarea";
+import FormOgImages from "./FormOgImages";
 import Spinner from "../Helpers/Spinner";
 
 const status = ["coming soon", "new arrivals", "sale", "regular"];
@@ -17,7 +15,6 @@ const type = ["jacket", "shirt", "top", "hat", "accessory", "pants"];
 const EditItemForm = ({ item }) => {
   const {
     photos,
-    isAvailable,
     name,
     stock,
     fabric,
@@ -25,7 +22,6 @@ const EditItemForm = ({ item }) => {
     description,
     status: itemStatus,
     type: itemType,
-    _id,
   } = item;
 
   const [sizing, setSizing] = useState(stock.length > 1);
@@ -125,16 +121,14 @@ const EditItemForm = ({ item }) => {
             />
           </div>
         ) : (
-          <div className="w-40">
-            <FormInput
-              defaultValue={stock[0]?.quantity}
-              classValue="text-sm"
-              type="number"
-              labelText="ONE SIZE"
-              name="oneSize"
-              placeHolder="QTY"
-            />
-          </div>
+          <FormInput
+            defaultValue={stock[0]?.quantity}
+            classValue="text-sm"
+            type="number"
+            labelText="ONE SIZE"
+            name="oneSize"
+            placeHolder="QTY"
+          />
         )}
       </div>
 
@@ -155,40 +149,12 @@ const EditItemForm = ({ item }) => {
           value={ogPhotos}
         />
         <FormFileInput />
-        <h4 className="heading-3 mt-sm">
-          已上傳圖片 點擊{<BsTrash className="inline-block" />}
-          刪除 / {<AiFillStar className="inline-block" />} 為首圖
-        </h4>
-        <div className="form__images">
-          {ogPhotos.length > 0 &&
-            ogPhotos.map((photo) => (
-              <div className="form__og-item" key={photo}>
-                <img className="form__image" src={photo} alt="item photo" />
-                <button
-                  type="button"
-                  onClick={() => {
-                    deleteOgPhoto(photo);
-                  }}
-                  className="btn-trash"
-                >
-                  <BsTrash />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    changeMainPic(photo);
-                  }}
-                  className="btn-star"
-                >
-                  {photo === ogPhotos[0] ? (
-                    <AiFillStar />
-                  ) : (
-                    <AiFillStar className="btn-star--not-first" />
-                  )}
-                </button>
-              </div>
-            ))}
-        </div>
+
+        <FormOgImages
+          ogPhotos={ogPhotos}
+          deleteOgPhoto={deleteOgPhoto}
+          changeMainPic={changeMainPic}
+        />
       </div>
 
       <button
