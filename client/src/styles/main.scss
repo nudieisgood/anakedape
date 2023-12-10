@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Lato:wght@100;300;400;700;900&display=swap");
+
+//import abstracts
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+//import base
+@import "base/base";
+@import "base/utilities";
+@import "base/typography";
+
+//import components
+@import "components/button";
+@import "components/loaders";
+@import "components/carousel";
+@import "components/dots";
+@import "components/modalContainer";
+@import "../components/Pagination/pagination";
+@import "../components/Header/header";
+@import "../components/Footer/footer";
+@import "../components/Form/form";
+
+//import page
+@import "../Page/Home/home";
+@import "../Page/Item/items";
+@import "../Page/Item/item";
+@import "../Page/Feature/feature";
+@import "../Page/Feature/features";
+@import "../Page/Visual/visual";
+@import "../Page/Checkout/checkout";
+@import "../Page/Cart/cart";
+@import "../Page/User/login-register";
+@import "../Page/Admin/admin";

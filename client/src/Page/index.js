@@ -1,30 +1,29 @@
-import Feature from "./Feature";
-import Features from "./Features";
-import Items from "./Items";
-import Item from "./Item";
-import Visual from "./Visual";
-import Home from "./Home";
-import HomeLayout from "./HomeLayout";
-import Cart from "./Cart";
-import Checkout from "./Checkout";
-import Register from "./Register";
-import Login from "./Login";
-import Completed from "./Completed";
-import AdminLayout from "./AdminLayout";
-import AdminNav from "./AdminNav";
-import EditItem from "./EditItem";
-import ManageItems from "./ManageItems";
-import Orders from "./Orders";
-import EditFeature from "./EditFeature";
-import AddFeature from "./AddFeature";
-import ErrorPage from "./ErrorPage";
+import Features from "./Feature/Features";
+import Feature from "./Feature/Feature";
+import Items from "./Item/Items";
+import Item from "./Item/Item";
+import Visual from "./Visual/Visual";
+import Home from "./Home/Home";
+import HomeLayout from "./Home/HomeLayout";
+import Cart from "./Cart/Cart";
+import Checkout from "./Checkout/Checkout";
+import Register from "./User/Register";
+import Login from "./User/Login";
+import Completed from "./Completed/Completed";
+import AdminLayout from "./Admin/AdminLayout";
+import AdminNav from "./Admin/AdminNav";
+import ManageItems from "./Admin/ManageItems";
+import EditItem from "./Admin/EditItem";
+import Orders from "./Admin/Orders";
+import EditFeature from "./Admin/EditFeature";
+import AddFeature from "./Admin/AddFeature";
+import ErrorPage from "./Error/ErrorPage";
 
 export {
   Feature,
   Features,
   Item,
   Items,
-  Visual,
   Home,
   HomeLayout,
   Cart,
@@ -40,4 +39,5 @@ export {
   EditFeature,
   AddFeature,
   ErrorPage,
+  Visual,
 };

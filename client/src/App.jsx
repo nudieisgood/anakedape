@@ -1,4 +1,3 @@
-import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { AppContextProvider } from "./context/AppContext";
 
@@ -25,30 +24,31 @@ import {
   ErrorPage,
 } from "./Page";
 
-//import loader
-import { loader as featuresLoader } from "./Page/Features";
-import { loader as featureLoader } from "./Page/Feature";
-import { loader as visualLoader } from "./Page/Visual";
-import { loader as itemsLoader } from "./Page/Items";
-import { loader as itemLoader } from "./Page/Item";
-import { loader as cartLoader } from "./Page/Cart";
-import { loader as checkoutLoader } from "./Page/Checkout";
-import { loader as homeLoader } from "./Page/Home";
-import { loader as editItemLoader } from "./Page/EditItem";
-import { loader as ordersLoader } from "./Page/Orders";
-import { loader as editFeatureLoader } from "./Page/EditFeature";
-import { loader as addFeatureLoader } from "./Page/AddFeature";
-import { loader as adminLoader } from "./Page/AdminLayout";
-
-//import action
-import { action as itemAction } from "./Page/Item";
-import { action as cartAction } from "./Page/Cart";
-import { action as checkoutAction } from "./Page/Checkout";
-import { action as registerAction } from "./Page/Register";
-import { action as addItemAction } from "./Page/ManageItems";
-import { action as editItemAction } from "./Page/EditItem";
-import { action as editFeatureAction } from "./Page/EditFeature";
-import { action as addFeatureAction } from "./Page/AddFeature";
+//import actions and loaders
+import { loader as featuresLoader } from "./Page/Feature/Features";
+import { loader as featureLoader } from "./Page/Feature/Feature";
+import { loader as itemsLoader } from "./Page/Item/Items";
+import { loader as itemLoader } from "./Page/Item/Item";
+import { loader as cartLoader } from "./Page/Cart/Cart";
+import {
+  loader as checkoutLoader,
+  action as checkoutAction,
+} from "./Page/Checkout/Checkout";
+import { loader as homeLoader } from "./Page/Home/Home";
+import {
+  loader as editItemLoader,
+  action as editItemAction,
+} from "./Page/Admin/EditItem";
+import { loader as ordersLoader } from "./Page/Admin/Orders";
+import { loader as editFeatureLoader } from "./Page/Admin/AddFeature";
+import {
+  loader as addFeatureLoader,
+  action as addFeatureAction,
+} from "./Page/Admin/AddFeature";
+import { loader as adminLoader } from "./Page/Admin/AdminLayout";
+import { action as addItemAction } from "./Page/Admin/ManageItems";
+import { action as editFeatureAction } from "./Page/Admin/EditFeature";
+import { action as registerAction } from "./Page/User/Register";
 
 const router = createBrowserRouter([
   {
@@ -64,16 +64,14 @@ const router = createBrowserRouter([
         path: "item/:id",
         element: <Item />,
         loader: itemLoader,
-        action: itemAction,
       },
-      { path: "visual", element: <Visual />, loader: visualLoader },
+      { path: "visual", element: <Visual /> },
       { path: "features", element: <Features />, loader: featuresLoader },
       { path: "feature/:id", element: <Feature />, loader: featureLoader },
       {
         path: "cart",
         element: <Cart />,
         loader: cartLoader,
-        action: cartAction,
       },
       {
         path: "completed",
