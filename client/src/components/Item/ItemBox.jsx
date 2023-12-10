@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import customFetch from "../../utilities/customFetch";
-import PillBtn from "../Helpers/pillBtn";
+import PillBtn from "../Helpers/PillBtn";
 
 const ItemBox = ({ item, user }) => {
   const [available, setAvailable] = useState(item.isAvailable);
