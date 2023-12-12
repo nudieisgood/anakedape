@@ -57,7 +57,7 @@ const Features = () => {
                           <div className="features-page__item-text">
                             <p>{feat.featureTitle1}</p>
                             <p>{feat.featureTitle2}</p>
-                            <h4>{feat.date}</h4>
+                            <h4 className="heading-4">{feat.date}</h4>
                           </div>
                         </FadeIn>
                       </Link>
