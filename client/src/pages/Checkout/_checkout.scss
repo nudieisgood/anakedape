@@ -17,9 +17,17 @@
     margin-bottom: 1rem;
   }
 
+  &__form-group > *:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+
   &__input-group {
     display: flex;
     gap: 0.25rem;
+
+    div {
+      flex: 1;
+    }
   }
 
   &__detail {

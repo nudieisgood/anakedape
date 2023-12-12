@@ -64,9 +64,9 @@ const Checkout = () => {
             placeHolder="youreamil@email.com"
           />
         </div>
-        <div>
+        <div className="checkout__form-group">
           <h1 className="heading-1">DELIVERY</h1>
-          <div>
+          <div className="checkout__input-group">
             <FormInput
               name="postalCode"
               type="number"
@@ -80,7 +80,7 @@ const Checkout = () => {
             placeHolder="Please provide completed address."
           />
         </div>
-        <div>
+        <div className="checkout__form-group">
           <h1 className="heading-1">INFORMATION</h1>
           <div className="checkout__input-group">
             <FormInput name="lastName" type="text" placeHolder="Last name" />
@@ -94,7 +94,7 @@ const Checkout = () => {
             placeHolder="Phone"
           />
         </div>
-        <div>
+        <div className="checkout__form-group">
           <h1 className="heading-1">PAYMENT</h1>
           <FormInput
             inputError={errors?.includes("invalid card number")}
